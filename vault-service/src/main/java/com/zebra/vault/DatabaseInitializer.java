@@ -15,17 +15,25 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-
         jdbcTemplate.execute("""
-                    CREATE TABLE IF NOT EXISTS vault (
-                        id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                        card_number VARCHAR(19) NOT NULL,
-                        expiration_month SMALLINT NOT NULL,
-                        expiration_year SMALLINT NOT NULL,
-                        cardholder_name VARCHAR(255) NOT NULL
+                    CREATE TABLE IF NOT EXISTS merchants (
+                        id UUID PRIMARY KEY
                     )
                 """);
 
-        System.out.println("VAULT TABLE CREATED!");
+        jdbcTemplate.execute("""
+                    CREATE TABLE IF NOT EXISTS payment_methods (
+                        id UUID PRIMARY KEY,
+                        merchant_id UUID NOT NULL REFERENCES merchants(id),
+                        encryption_key_version SMALLINT NOT NULL,
+                        encrypted_pan BYTEA NOT NULL,
+                        last_four_digits VARCHAR(4) NOT NULL,
+                        expiration_month SMALLINT NOT NULL CHECK (expiration_month BETWEEN 1 AND 12),
+                        expiration_year SMALLINT NOT NULL,
+                        card_brand VARCHAR(20) NOT NULL
+                    )
+                """);
+
+        System.out.println("VAULT TABLES CREATED!");
     }
 }

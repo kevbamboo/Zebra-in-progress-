@@ -1,7 +1,12 @@
-package com.zebra.payment.payment_processor.payment_intent;
+package com.zebra.payment.payment_intent;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 public class CreatePaymentIntentRequest {
+    @Positive
     private long amount;
+    @NotBlank
     private String currency;
 
     public CreatePaymentIntentRequest(long amount, String currency) {

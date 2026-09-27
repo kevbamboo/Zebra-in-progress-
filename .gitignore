@@ -1,0 +1,6 @@
+# Ignore .env files in every directory.
+*.env
+
+# Ignore test folders in every directory.
+test/
+tests/

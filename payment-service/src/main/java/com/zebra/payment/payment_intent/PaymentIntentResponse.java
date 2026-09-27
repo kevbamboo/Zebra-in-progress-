@@ -1,4 +1,4 @@
-package com.zebra.payment.payment_processor.payment_intent;
+package com.zebra.payment.payment_intent;
 
 public class PaymentIntentResponse {
     private String id;

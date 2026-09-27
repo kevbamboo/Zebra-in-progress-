@@ -1,4 +1,4 @@
-package com.zebra.payment.payment_processor.payment_intent;
+package com.zebra.payment.payment_intent;
 
 import org.springframework.stereotype.Service;
 

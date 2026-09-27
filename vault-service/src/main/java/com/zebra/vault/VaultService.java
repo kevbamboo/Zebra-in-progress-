@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 public class VaultService {
 
     public String getId(PaymentMethod paymentMethod) {
-        return "vault-" + paymentMethod.getCardNumber()
-                .replaceAll("\\D", "")
-                .substring(Math.max(0, paymentMethod.getCardNumber().replaceAll("\\D", "").length() - 4));
+        return "";
+    }
+
+    public String savePaymentMethod(PaymentMethod pm) {
+        return "";
     }
 }
