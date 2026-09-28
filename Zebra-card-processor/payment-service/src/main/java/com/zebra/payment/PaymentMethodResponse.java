@@ -1,8 +1,8 @@
-package com.zebra.vault.payment_method;
+package main.java.com.zebra.payment;
 
 public class PaymentMethodResponse {
     // public String id/token;
-    public String paymentMethodId;
+    public String pmId;
     public String lastFourDigits;
     // public String type;
     public String cardBrand;
@@ -10,9 +10,9 @@ public class PaymentMethodResponse {
     public int expMonth;
     public int expYear;
 
-    public PaymentMethodResponse(String paymentMethodId, String lastFourDigits, String cardBrand, int expMonth,
+    public PaymentMethodResponse(String pmId, String lastFourDigits, String cardBrand, int expMonth,
             int expYear) {
-        this.paymentMethodId = paymentMethodId;
+        this.pmId = pmId;
         this.lastFourDigits = lastFourDigits;
         this.cardBrand = cardBrand;
         this.expMonth = expMonth;

@@ -16,7 +16,7 @@ public class VaultClient {
 
     public createPaymentMethod() {}
 
-    public PaymentMethodResponse checkPaymentMethod(String pmString) {
-        return vaultClient.post()
+    public PaymentMethodResponse usePaymentMethod(UsePaymentMethodRequest request) {
+        return vaultClient.get().uri("/payment-methods").body(request).retrieve(PaymentMethodResponse.class);
     }
 }

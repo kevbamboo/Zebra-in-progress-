@@ -15,7 +15,7 @@ public class VaultService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public String checkPaymentMethod(String merchantId, String pmId, long amount, String currency) {
+    public String usePaymentMethod(String merchantId, String pmId, long amount, String currency) {
         PaymentMethod pm = jdbcTemplate.queryForObject(
                 """
                         SELECT merchant_id, encryption_key_version, encrypted_pan, last_four_digits, expiration_month, expiration_year, card_brand

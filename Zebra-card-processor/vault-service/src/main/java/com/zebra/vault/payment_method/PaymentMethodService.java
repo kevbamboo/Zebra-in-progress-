@@ -149,7 +149,7 @@ public class PaymentMethodService {
             return null;
     }
 
-    public PaymentMethodResponse checkPaymentMethod(CheckPMIDRequest request) {
+    public PaymentMethodResponse usePaymentMethod(UsePaymentMethodRequest request) {
         vaultService.checkPaymentMethod(request.getMerchantId(), request.getPMId(), request.getAmount(),
                 request.getCurrency());
         return null;

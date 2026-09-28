@@ -18,9 +18,9 @@ public class PaymentMethodController {
         this.service = service;
     }
 
-    @GetMapping("/{merchantId}/{pmId}")
-    public PaymentMethodResponse check(@Valid @RequestBody CheckPMIDRequest request) {
-        return service.checkPaymentMethod(request);
+    @GetMapping()
+    public PaymentMethodResponse use(@Valid @RequestBody UsePaymentMethodRequest request) {
+        return service.usePaymentMethod(request);
     }
 
     @PostMapping()

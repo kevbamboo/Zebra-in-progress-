@@ -1,9 +1,9 @@
-package com.zebra.vault.payment_method;
+package main.java.com.zebra.payment;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
-public class CheckPMIDRequest {
+public class UsePaymentMethodRequest {
     @NotBlank
     private String pmId;
     @NotBlank
@@ -15,7 +15,7 @@ public class CheckPMIDRequest {
     @NotBlank
     private String paymentIntentId;
 
-    public CheckPMIDRequest(String pmId, String merchantId, long amount, String currency,
+    public UsePaymentMethodRequest(String pmId, String merchantId, long amount, String currency,
             String paymentIntentId) {
         this.pmId = pmId;
         this.merchantId = merchantId;
