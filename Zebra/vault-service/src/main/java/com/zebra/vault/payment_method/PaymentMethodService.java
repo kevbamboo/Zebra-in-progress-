@@ -131,12 +131,10 @@ public class PaymentMethodService {
             throw new IllegalArgumentException("Invalid CVV");
         }
 
-        // Next:
-        // encrypt PAN
+        // check if exists? if already exists return the existing pm id
+
         // generate payment method ID
         // store payment method
-        // do NOT store CVV
-        // return safe PaymentMethodResponse
         byte[] encryptedPan = panEncryptionService.encrypt(pan);
         int version = panEncryptionService.getActiveKeyVersion(); // maybe encrypt should return these together?
         String lastFourDigits = pan.substring(pan.length() - 4);
@@ -144,7 +142,16 @@ public class PaymentMethodService {
                 request.getMerchantId(), version, encryptedPan,
                 lastFourDigits, request.getExpMonth(), request.getExpYear(), cardBrand));
 
-        return new PaymentMethodResponse(paymentMethodId, lastFourDigits, cardBrand,
-                request.getExpMonth(), request.getExpYear());
+        if (paymentMethodId.substring(0, 3).equals("pm_"))
+            return new PaymentMethodResponse(paymentMethodId, lastFourDigits, cardBrand,
+                    request.getExpMonth(), request.getExpYear());
+        else
+            return null;
+    }
+
+    public PaymentMethodResponse checkPaymentMethod(CheckPMIDRequest request) {
+        vaultService.checkPaymentMethod(request.getMerchantId(), request.getPMId(), request.getAmount(),
+                request.getCurrency());
+        return null;
     }
 }

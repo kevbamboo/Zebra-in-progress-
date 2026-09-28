@@ -1,6 +1,9 @@
 package com.zebra.vault.payment_method;
 
 import jakarta.validation.Valid;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +16,11 @@ public class PaymentMethodController {
 
     public PaymentMethodController(PaymentMethodService service) {
         this.service = service;
+    }
+
+    @GetMapping("/{merchantId}/{pmId}")
+    public PaymentMethodResponse check(@Valid @RequestBody CheckPMIDRequest request) {
+        return service.checkPaymentMethod(request);
     }
 
     @PostMapping()
